@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IVANICH SHOP</title>
+<title>𝐈𝐕𝐀𝐍𝐈𝐂𝐇 𝐓𝐎𝐏 𝐌𝐀𝐑𝐊𝐄𝐓</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -16,17 +16,17 @@ html,body{
   user-select:none;
 }
 
-/* ===== ФОН (ВСЕГДА ЦЕЛИКОМ) ===== */
+/* ===== ФОН ===== */
 body{
   background-color:#050006;
   background-image:url("skull-bg.png");
   background-position:center center;
   background-repeat:no-repeat;
-  background-size:contain; /* КЛЮЧЕВОЕ */
-  color:#f0e6ff;
+  background-size:contain;
+  color:#ffd86b;
 }
 
-/* затемнение для читаемости */
+/* затемнение */
 body::before{
   content:"";
   position:fixed;
@@ -44,25 +44,40 @@ body::before{
   display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:24px;
+  gap:26px;
   text-align:center;
 }
 
-h1{
-  font-size:1.8rem;
-  color:#e0d0ff;
-  text-shadow:0 0 6px #a26cff,0 0 20px #6000c0;
+/* ===== ЗОЛОТОЙ НЕОН ===== */
+h1, p, button{
+  color:#ffd86b;
+  text-shadow:
+    0 0 3px #ffdd77,
+    0 0 8px #ffb700,
+    0 0 18px #cc8f00;
 }
 
+h1{
+  font-size:1.9rem;
+}
+
+/* основной текст */
 .futuristic-text{
-  font-size:.95rem;
-  line-height:1.4;
+  font-size:1rem;
+  line-height:1.5;
   white-space:pre-line;
 }
 
+/* ===== НОВАЯ ФРАЗА (КРУПНО И ЖИРНО) ===== */
 .telegram-warning{
-  color:#ff3b3b;
-  font-weight:bold;
+  font-size:1.25rem;       /* БОЛЬШЕ */
+  font-weight:900;         /* ЖИРНЕЕ */
+  letter-spacing:1px;
+  text-transform:uppercase;
+  text-shadow:
+    0 0 4px #ffe08a,
+    0 0 10px #ffb700,
+    0 0 24px #cc8f00;
 }
 
 /* ===== КНОПКИ ===== */
@@ -75,20 +90,25 @@ h1{
 
 button{
   background:rgba(0,0,0,0.55);
-  border:1.5px solid #a26cff;
-  color:#a26cff;
-  padding:10px 24px;
+  border:2px solid #ffcc55;
+  padding:11px 28px;
   border-radius:6px;
   cursor:pointer;
-  transition:.3s;
-  min-width:120px;
-  backdrop-filter:blur(2px);
+  transition:.25s;
+  min-width:140px;
+  font-weight:700;
+  box-shadow:
+    0 0 6px #ffcc55,
+    0 0 16px #cc8f00;
 }
 
 button:hover{
-  background:#a26cff;
+  background:#ffcc55;
   color:#000;
-  box-shadow:0 0 12px #a26cff;
+  text-shadow:none;
+  box-shadow:
+    0 0 14px #ffcc55,
+    0 0 34px #ffb700;
 }
 </style>
 </head>
@@ -96,7 +116,7 @@ button:hover{
 <body>
 
 <div id="content">
-  <h1>IVANICH SHOP</h1>
+  <h1>𝐈𝐕𝐀𝐍𝐈𝐂𝐇 𝐓𝐎𝐏 𝐌𝐀𝐑𝐊𝐄𝐓</h1>
 
   <p class="futuristic-text">
 НАШ КЛИЕНТ — НЕ БОГ, НО ОЧЕНЬ БЛИЗКО  
@@ -104,15 +124,20 @@ button:hover{
 ЭТО НЕ МАГАЗИН — ЭТО ДОСТУП
   </p>
 
-  <p class="telegram-warning">МУР · КРИСТАЛЛ · ГАШ · АМФ · ШИШКИ</p>
+  <!-- ОБНОВЛЁННАЯ ФРАЗА -->
+  <p class="telegram-warning">
+ПЕРЕХОД НА ТЕЛЕГРАММ ТОЛЬКО ЧЕРЕЗ БРАУЗЕР
+  </p>
 
   <div id="container"></div>
 </div>
 
 <script>
-// ================= TELEGRAM LINKS =================
-const tgLinks = {
-  "ОПЕРАТОР": "tg://open?url=https://t.me/m/WaE8Y4yVZmI8",
+// ================= ССЫЛКИ =================
+const LINKS = {
+  OPERATOR_WEB: "https://t.me/m/WaE8Y4yVZmI8",
+  OPERATOR_TG:  "tg://open?url=https://t.me/m/WaE8Y4yVZmI8",
+
   "ЧАТ":     "tg://join?invite=q5G7ZOOG1vI0NmQ0",
   "ВИП ЧАТ": "tg://join?invite=lPlh3th-aWxjYzk0",
   "НОВОСТИ": "tg://join?invite=PPvXyMe87FxlM2I0",
@@ -120,44 +145,47 @@ const tgLinks = {
   "АУКЦИОН": "tg://join?invite=P2N70uFsT99mMzYx"
 };
 
-// ================= TG OPEN ENGINE =================
+// ================= 100% ОПЕРАТОР =================
+function openOperator(){
+  const iframe=document.createElement("iframe");
+  iframe.style.display="none";
+  iframe.src=LINKS.OPERATOR_TG;
+  document.body.appendChild(iframe);
+
+  setTimeout(()=>{
+    try{iframe.remove()}catch(e){}
+    window.location.href = LINKS.OPERATOR_WEB;
+  }, 450);
+}
+
+// ================= TG ОТКРЫТИЕ =================
 function openTelegram(target){
   const iframe=document.createElement("iframe");
   iframe.style.display="none";
   iframe.src=target;
   document.body.appendChild(iframe);
-
-  setTimeout(()=>{
-    try{iframe.remove()}catch(e){}
-    const html=`
-<!DOCTYPE html><html><body style="margin:0;background:#000;color:#b289ff;
-display:flex;align-items:center;justify-content:center;height:100vh;
-font-family:monospace;flex-direction:column">
-<p>Открываем Telegram…</p>
-<button onclick="location.href='${target}'"
-style="padding:12px 24px;border:2px solid #b289ff;
-background:transparent;color:#b289ff;font-size:16px">
-Открыть
-</button>
-<script>
-setTimeout(()=>location.href='${target}',800);
-<\/script>
-</body></html>`;
-    const blob=new Blob([html],{type:"text/html"});
-    window.open(URL.createObjectURL(blob),"_blank","noopener");
-  },400);
+  setTimeout(()=>{ try{iframe.remove()}catch(e){} },400);
 }
 
-// ================= BUTTONS =================
+// ================= КНОПКИ =================
 const container=document.getElementById("container");
-Object.entries(tgLinks).forEach(([title,url])=>{
-  const btn=document.createElement("button");
-  btn.textContent=title;
-  btn.onclick=()=>openTelegram(url);
-  container.appendChild(btn);
+
+// оператор
+const opBtn=document.createElement("button");
+opBtn.textContent="ОПЕРАТОР";
+opBtn.onclick=openOperator;
+container.appendChild(opBtn);
+
+// остальные
+Object.entries(LINKS).forEach(([k,v])=>{
+  if(k==="OPERATOR_WEB"||k==="OPERATOR_TG") return;
+  const b=document.createElement("button");
+  b.textContent=k;
+  b.onclick=()=>openTelegram(v);
+  container.appendChild(b);
 });
 
-// ================= BASIC PROTECTION =================
+// ================= ЗАЩИТА =================
 document.addEventListener("keydown",e=>{
   if(
     e.key==="F12" ||
