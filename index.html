@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IVANICH SHOP</title>
+<title>𝐈𝐕𝐀𝐍𝐈𝐂𝐇 𝐓𝐎𝐏 𝐌𝐀𝐑𝐊𝐄𝐓</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 html,body{
-  width:100%;
-  height:100%;
+  width:100%;height:100%;
   font-family:'Share Tech Mono', monospace;
   user-select:none;
 }
@@ -19,89 +17,48 @@ html,body{
 body{
   background:#050006 url("skull-bg.png") center center / contain no-repeat fixed;
 }
-
-/* затемнение */
 body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:rgba(5,0,6,0.65);
-  z-index:-1;
+  content:"";position:fixed;inset:0;
+  background:rgba(5,0,6,0.65);z-index:-1;
 }
 
 /* ===== КОНТЕНТ ===== */
 #content{
-  max-width:720px;
-  margin:auto;
-  padding:40px 16px;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:26px;
-  text-align:center;
+  max-width:720px;margin:auto;padding:40px 16px;
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;gap:26px;text-align:center;
 }
 
-/* ===== ТЕКСТ: ЧЁРНЫЙ + НЕОНОВАЯ ОБВОДКА ===== */
-h1, .futuristic-text{
+/* ===== ТЕКСТ ===== */
+h1,.futuristic-text{
   color:#000;
-  text-shadow:
-    0 0 3px #ffd86b,
-    0 0 10px #ffb700,
-    0 0 22px #cc8f00;
+  text-shadow:0 0 3px #ffd86b,0 0 10px #ffb700,0 0 22px #cc8f00;
 }
-
-h1{ font-size:1.9rem; }
-
-.futuristic-text{
-  font-size:1rem;
-  line-height:1.5;
-  white-space:pre-line;
-}
+h1{font-size:1.9rem}
+.futuristic-text{font-size:1rem;line-height:1.5;white-space:pre-line}
 
 /* ===== КРАСНЫЙ НЕОН ===== */
 .telegram-warning{
-  font-size:1.35rem;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  color:#000;
-  text-shadow:
-    0 0 4px #ff4b4b,
-    0 0 10px #ff0000,
-    0 0 26px #b00000;
+  font-size:1.35rem;font-weight:900;letter-spacing:1px;
+  text-transform:uppercase;color:#000;
+  text-shadow:0 0 4px #ff4b4b,0 0 10px #ff0000,0 0 26px #b00000;
 }
 
 /* ===== КНОПКИ ===== */
-#container{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:14px;
-}
-
+#container{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
 button{
   background:rgba(0,0,0,0.6);
   border:2px solid #ffcc55;
   color:#000;
-  padding:12px 30px;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:800;
-  text-shadow:
-    0 0 3px #ffd86b,
-    0 0 10px #ffb700;
-  box-shadow:
-    0 0 6px #ffcc55,
-    0 0 18px #cc8f00;
+  padding:12px 30px;border-radius:6px;
+  cursor:pointer;font-weight:800;
+  text-shadow:0 0 3px #ffd86b,0 0 10px #ffb700;
+  box-shadow:0 0 6px #ffcc55,0 0 18px #cc8f00;
   transition:.25s;
 }
-
 button:hover{
   background:#ffcc55;
-  box-shadow:
-    0 0 16px #ffcc55,
-    0 0 36px #ffb700;
+  box-shadow:0 0 16px #ffcc55,0 0 36px #ffb700;
 }
 </style>
 </head>
@@ -109,12 +66,10 @@ button:hover{
 <body>
 
 <div id="content">
-  <h1>IVANICH SHOP</h1>
+  <h1>𝐈𝐕𝐀𝐍𝐈𝐂𝐇 𝐓𝐎𝐏 𝐌𝐀𝐑𝐊𝐄𝐓</h1>
 
   <p class="futuristic-text">
 НАШ КЛИЕНТ — НЕ БОГ, НО ОЧЕНЬ БЛИЗКО  
-СЕРВИС НА ГРАНИ ФАНТАСТИКИ  
-ЭТО НЕ МАГАЗИН — ЭТО ДОСТУП
   </p>
 
   <p class="telegram-warning">
@@ -125,35 +80,35 @@ button:hover{
 </div>
 
 <script>
-// ===== РЕАЛЬНЫЕ КОНТАКТЫ (НЕ СВЕТЯТСЯ) =====
+// ===== КОНТАКТЫ =====
 const LINKS = {
   "ОПЕРАТОР": {
-    tg:  "tg://open?url=https://t.me/m/WaE8Y4yVZmI8",
-    web: "https://t.me/m/WaE8Y4yVZmI8"
+    tg:"tg://open?url=https://t.me/m/WaE8Y4yVZmI8",
+    web:"https://t.me/m/WaE8Y4yVZmI8"
   },
   "ЧАТ": {
-    tg:  "tg://join?invite=q5G7ZOOG1vI0NmQ0",
-    web: "https://t.me/+q5G7ZOOG1vI0NmQ0"
+    tg:"tg://join?invite=q5G7ZOOG1vI0NmQ0",
+    web:"https://t.me/+q5G7ZOOG1vI0NmQ0"
   },
   "ВИП ЧАТ": {
-    tg:  "tg://join?invite=lPlh3th-aWxjYzk0",
-    web: "https://t.me/+lPlh3th-aWxjYzk0"
+    tg:"tg://join?invite=lPlh3th-aWxjYzk0",
+    web:"https://t.me/+lPlh3th-aWxjYzk0"
   },
   "НОВОСТИ": {
-    tg:  "tg://join?invite=PPvXyMe87FxlM2I0",
-    web: "https://t.me/+PPvXyMe87FxlM2I0"
+    tg:"tg://join?invite=PPvXyMe87FxlM2I0",
+    web:"https://t.me/+PPvXyMe87FxlM2I0"
   },
   "ОТЗЫВЫ": {
-    tg:  "tg://join?invite=IDPdbyYUbN0wYTk0",
-    web: "https://t.me/+IDPdbyYUbN0wYTk0"
+    tg:"tg://join?invite=IDPdbyYUbN0wYTk0",
+    web:"https://t.me/+IDPdbyYUbN0wYTk0"
   },
   "АУКЦИОН": {
-    tg:  "tg://join?invite=P2N70uFsT99mMzYx",
-    web: "https://t.me/+P2N70uFsT99mMzYx"
+    tg:"tg://join?invite=P2N70uFsT99mMzYx",
+    web:"https://t.me/+P2N70uFsT99mMzYx"
   }
 };
 
-// ===== BLOB-РЕДИРЕКТ (АДРЕС = blob: ) =====
+// ===== BLOB (ОДИН РАЗ) =====
 function openViaBlob(data){
   const html = `
 <!DOCTYPE html>
@@ -166,43 +121,54 @@ function openViaBlob(data){
 <body style="margin:0;background:#000;color:#ffcc55;
 display:flex;align-items:center;justify-content:center;height:100vh;
 font-family:monospace;flex-direction:column">
+
 <p>Открываем Telegram…</p>
+
 <script>
 (function(){
+  // 🔒 ФЛАГ: переход только один раз
+  if(sessionStorage.getItem("tg_redirect_done")){
+    document.body.insertAdjacentHTML("beforeend",
+      "<p>Переход уже выполнен</p>");
+    return;
+  }
+  sessionStorage.setItem("tg_redirect_done","1");
+
   var iframe=document.createElement("iframe");
   iframe.style.display="none";
   iframe.src="${data.tg}";
   document.body.appendChild(iframe);
+
   setTimeout(function(){
     try{iframe.remove()}catch(e){}
     location.href="${data.web}";
   },500);
 })();
 <\/script>
+
 </body>
 </html>`;
-  const blob = new Blob([html], {type:"text/html"});
-  const blobUrl = URL.createObjectURL(blob);
-  window.open(blobUrl, "_blank", "noopener");
+  const blob=new Blob([html],{type:"text/html"});
+  window.open(URL.createObjectURL(blob),"_blank","noopener");
 }
 
 // ===== КНОПКИ =====
 const container=document.getElementById("container");
-Object.entries(LINKS).forEach(([title, data])=>{
+Object.entries(LINKS).forEach(([title,data])=>{
   const b=document.createElement("button");
   b.textContent=title;
   b.onclick=()=>openViaBlob(data);
   container.appendChild(b);
 });
 
-// ===== ЖЁСТКАЯ ЗАЩИТА =====
+// ===== ЗАЩИТА =====
 document.addEventListener("keydown",e=>{
   if(
     e.key==="F12" ||
-    (e.ctrlKey && e.shiftKey && e.key.toLowerCase()==="i") ||
-    (e.ctrlKey && e.key.toLowerCase()==="u") ||
-    (e.ctrlKey && e.key.toLowerCase()==="c")
-  ){ e.preventDefault(); }
+    (e.ctrlKey&&e.shiftKey&&e.key.toLowerCase()==="i") ||
+    (e.ctrlKey&&e.key.toLowerCase()==="u") ||
+    (e.ctrlKey&&e.key.toLowerCase()==="c")
+  ){e.preventDefault()}
 });
 document.addEventListener("copy",e=>e.preventDefault());
 document.addEventListener("cut",e=>e.preventDefault());
