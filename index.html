@@ -29,7 +29,7 @@ body::before{
   justify-content:center;gap:26px;text-align:center;
 }
 
-/* ===== ТЕКСТ ===== */
+/* ===== ЧЁРНЫЙ ТЕКСТ + НЕОНОВАЯ ОБВОДКА ===== */
 h1,.futuristic-text{
   color:#000;
   text-shadow:0 0 3px #ffd86b,0 0 10px #ffb700,0 0 22px #cc8f00;
@@ -70,6 +70,8 @@ button:hover{
 
   <p class="futuristic-text">
 НАШ КЛИЕНТ — НЕ БОГ, НО ОЧЕНЬ БЛИЗКО  
+СЕРВИС НА ГРАНИ ФАНТАСТИКИ  
+ЭТО НЕ МАГАЗИН — ЭТО ДОСТУП
   </p>
 
   <p class="telegram-warning">
@@ -80,69 +82,47 @@ button:hover{
 </div>
 
 <script>
-// ===== КОНТАКТЫ =====
+// ===== ССЫЛКИ (ТОЛЬКО TG://) =====
 const LINKS = {
-  "ОПЕРАТОР": {
-    tg:"tg://open?url=https://t.me/m/WaE8Y4yVZmI8",
-    web:"https://t.me/m/WaE8Y4yVZmI8"
-  },
-  "ЧАТ": {
-    tg:"tg://join?invite=q5G7ZOOG1vI0NmQ0",
-    web:"https://t.me/+q5G7ZOOG1vI0NmQ0"
-  },
-  "ВИП ЧАТ": {
-    tg:"tg://join?invite=lPlh3th-aWxjYzk0",
-    web:"https://t.me/+lPlh3th-aWxjYzk0"
-  },
-  "НОВОСТИ": {
-    tg:"tg://join?invite=PPvXyMe87FxlM2I0",
-    web:"https://t.me/+PPvXyMe87FxlM2I0"
-  },
-  "ОТЗЫВЫ": {
-    tg:"tg://join?invite=IDPdbyYUbN0wYTk0",
-    web:"https://t.me/+IDPdbyYUbN0wYTk0"
-  },
-  "АУКЦИОН": {
-    tg:"tg://join?invite=P2N70uFsT99mMzYx",
-    web:"https://t.me/+P2N70uFsT99mMzYx"
-  }
+  "ОПЕРАТОР": "tg://open?url=https://t.me/m/WaE8Y4yVZmI8",
+  "ЧАТ":     "tg://join?invite=q5G7ZOOG1vI0NmQ0",
+  "ВИП ЧАТ": "tg://join?invite=lPlh3th-aWxjYzk0",
+  "НОВОСТИ": "tg://join?invite=PPvXyMe87FxlM2I0",
+  "ОТЗЫВЫ":  "tg://join?invite=IDPdbyYUbN0wYTk0",
+  "АУКЦИОН": "tg://join?invite=P2N70uFsT99mMzYx"
 };
 
-// ===== BLOB (ОДИН РАЗ) =====
-function openViaBlob(data){
+// ===== BLOB → ТОЛЬКО TG (БЕЗ WEB FALLBACK) =====
+function openViaBlob(tgLink){
   const html = `
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Redirect</title>
+<title>Telegram only</title>
 </head>
 <body style="margin:0;background:#000;color:#ffcc55;
 display:flex;align-items:center;justify-content:center;height:100vh;
 font-family:monospace;flex-direction:column">
 
-<p>Открываем Telegram…</p>
+<p>Открытие через Telegram…</p>
 
 <script>
 (function(){
-  // 🔒 ФЛАГ: переход только один раз
-  if(sessionStorage.getItem("tg_redirect_done")){
+  // 🔒 ОДИН РАЗ
+  if(sessionStorage.getItem("tg_only_done")){
     document.body.insertAdjacentHTML("beforeend",
-      "<p>Переход уже выполнен</p>");
+      "<p>Повторный переход запрещён</p>");
     return;
   }
-  sessionStorage.setItem("tg_redirect_done","1");
+  sessionStorage.setItem("tg_only_done","1");
 
+  // ❌ БРАУЗЕР ЗАПРЕЩЁН — ТОЛЬКО TG
   var iframe=document.createElement("iframe");
   iframe.style.display="none";
-  iframe.src="${data.tg}";
+  iframe.src="${tgLink}";
   document.body.appendChild(iframe);
-
-  setTimeout(function(){
-    try{iframe.remove()}catch(e){}
-    location.href="${data.web}";
-  },500);
 })();
 <\/script>
 
@@ -154,14 +134,14 @@ font-family:monospace;flex-direction:column">
 
 // ===== КНОПКИ =====
 const container=document.getElementById("container");
-Object.entries(LINKS).forEach(([title,data])=>{
+Object.entries(LINKS).forEach(([title,tg])=>{
   const b=document.createElement("button");
   b.textContent=title;
-  b.onclick=()=>openViaBlob(data);
+  b.onclick=()=>openViaBlob(tg);
   container.appendChild(b);
 });
 
-// ===== ЗАЩИТА =====
+// ===== ЖЁСТКАЯ ЗАЩИТА =====
 document.addEventListener("keydown",e=>{
   if(
     e.key==="F12" ||
