@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>𝐈𝐕𝐀𝐍𝐈𝐂𝐇 𝐓𝐎𝐏 𝐌𝐀𝐑𝐊𝐄𝐓</title>
+<title>IVANICH TOP MARKET</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -88,14 +88,16 @@ button.locked{
 <body>
 
 <div id="content">
-  <h1>𝐈𝐕𝐀𝐍𝐈𝐂𝐇 𝐓𝐎𝐏 𝐌𝐀𝐑𝐊𝐄𝐓</h1>
+  <h1>IVANICH TOP MARKET</h1>
 
   <p class="futuristic-text">
 НАШ КЛИЕНТ — НЕ БОГ, НО ОЧЕНЬ БЛИЗКО  
+СЕРВИС НА ГРАНИ ФАНТАСТИКИ  
+ЭТО НЕ МАГАЗИН — ЭТО ДОСТУП
   </p>
 
   <p class="telegram-warning">
-МУР, КРИСТАЛЛ, КОЛЁСА, НАТУР, ШОКОЛАД
+ПЕРЕХОД В TELEGRAM ТОЛЬКО ЧЕРЕЗ ПРИЛОЖЕНИЕ
   </p>
 
   <div id="container"></div>
@@ -129,30 +131,16 @@ function lockAllButtons(){
 }
 
 /* =========================
-   СБОРКА tg://
+   СБОРКА tg:// join
    ========================= */
-// join?invite=...
 function buildTGJoin(inv){
   return ['t','g',':','/','/','j','o','i','n','?','i','n','v','i','t','e','='].join('')
        + inv.join('');
 }
-// open?url=... (С encodeURIComponent)
-function buildTGOpen(urlArr){
-  const rawUrl = urlArr.join('');
-  const encoded = encodeURIComponent(rawUrl);
-  return ['t','g',':','/','/','o','p','e','n','?','u','r','l','='].join('')
-       + encoded;
-}
 
 /* =========================
-   PAYLOAD
+   INVITE-КОДЫ
    ========================= */
-// ОПЕРАТОР — t.me/m/...
-const OP_URL = [
-  'h','t','t','p','s',':','/','/','t','.','m','e','/','m','/','W','a','E','8','Y','4','y','V','Z','m','I','8'
-];
-
-// Остальные — join invite
 const INVITES = {
   CH:['q','5','G','7','Z','O','O','G','1','v','I','0','N','m','Q','0'],
   VI:['l','P','l','h','3','t','h','-','a','W','x','j','Y','z','k','0'],
@@ -164,7 +152,7 @@ const INVITES = {
 /* =========================
    ОТКРЫТИЕ TELEGRAM
    ========================= */
-  function openTG(payload, isOperator){
+function openTG(inv){
   if(GLOBAL_LOCK) return;
   GLOBAL_LOCK = true;
   lockAllButtons();
@@ -172,11 +160,7 @@ const INVITES = {
   const msg = document.getElementById('tg-msg');
   msg.style.display = 'none';
 
-  const tgLink = isOperator
-    ? buildTGOpen(payload)
-    : buildTGJoin(payload);
-
-  // ❗️ прямой вызов — самый стабильный
+  const tgLink = buildTGJoin(inv);
   window.location.href = tgLink;
 
   if(isDesktop()){
@@ -185,20 +169,19 @@ const INVITES = {
 }
 
 /* =========================
-   КНОПКИ
+   КНОПКИ (БЕЗ ОПЕРАТОРА)
    ========================= */
 const container = document.getElementById('container');
 [
-  ['ОПЕРАТОР', OP_URL, true],
-  ['ЧАТ', INVITES.CH, false],
-  ['ВИП ЧАТ', INVITES.VI, false],
-  ['НОВОСТИ', INVITES.NO, false],
-  ['ОТЗЫВЫ', INVITES.OT, false],
-  ['АУКЦИОН', INVITES.AU, false]
+  ['ЧАТ', INVITES.CH],
+  ['ВИП ЧАТ', INVITES.VI],
+  ['НОВОСТИ', INVITES.NO],
+  ['ОТЗЫВЫ', INVITES.OT],
+  ['АУКЦИОН', INVITES.AU]
 ].forEach(item=>{
   const b=document.createElement('button');
   b.textContent=item[0];
-  b.onclick=()=>openTG(item[1], item[2]);
+  b.onclick=()=>openTG(item[1]);
   container.appendChild(b);
 });
 </script>
