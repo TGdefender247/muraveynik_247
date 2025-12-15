@@ -111,7 +111,7 @@ button.locked{
 
 <script>
 /* =========================
-   ВСПОМОГАТЕЛЬНЫЕ ПРОВЕРКИ
+   ПРОВЕРКА ПК
    ========================= */
 function isDesktop(){
   const ua = navigator.userAgent.toLowerCase();
@@ -131,16 +131,29 @@ function lockAllButtons(){
 }
 
 /* =========================
-   ДИНАМИЧЕСКАЯ СБОРКА tg://
+   СБОРКА tg://
    ========================= */
-function buildTG(inv){
+// join?invite=...
+function buildTGJoin(inv){
   return ['t','g',':','/','/','j','o','i','n','?','i','n','v','i','t','e','='].join('')
        + inv.join('');
 }
+// open?url=...
+function buildTGOpen(urlArr){
+  return ['t','g',':','/','/','o','p','e','n','?','u','r','l','='].join('')
+       + urlArr.join('');
+}
 
-/* INVITE-КОДЫ (РАЗБИТЫ) */
+/* =========================
+   INVITE-КОДЫ
+   ========================= */
+// ОПЕРАТОР — ЭТО URL t.me/m/...
+const OP_URL = [
+  'h','t','t','p','s',':','/','/','t','.','m','e','/','m','/','W','a','E','8','Y','4','y','V','Z','m','I','8'
+];
+
+// Остальные — join invite
 const INVITES = {
-  OP:['W','a','E','8','Y','4','y','V','Z','m','I','8'],
   CH:['q','5','G','7','Z','O','O','G','1','v','I','0','N','m','Q','0'],
   VI:['l','P','l','h','3','t','h','-','a','W','x','j','Y','z','k','0'],
   NO:['P','P','v','X','y','M','e','8','7','F','x','l','M','2','I','0'],
@@ -151,41 +164,39 @@ const INVITES = {
 /* =========================
    ОТКРЫТИЕ TELEGRAM
    ========================= */
-function openTG(inv){
+function openTG(payload, isOperator){
   if(GLOBAL_LOCK) return;
-  GLOBAL_LOCK = true;
-  lockAllButtons();
+  GLOBAL_LOCK = true;lockAllButtons();
 
   const msg = document.getElementById('tg-msg');
   msg.style.display = 'none';
 
-  const tgLink = buildTG(inv);
+  const tgLink = isOperator
+    ? buildTGOpen(payload)
+    : buildTGJoin(payload);
 
-  // ❗️ Единственный стабильный способ
   window.location.href = tgLink;
 
-  // Детект Telegram Desktop (ТОЛЬКО ПК)
   if(isDesktop()){
-    setTimeout(()=>{
-      msg.style.display = 'block';
-    }, 1200);
+    setTimeout(()=>{ msg.style.display = 'block'; },1200);
   }
 }
-  /* =========================
+
+/* =========================
    КНОПКИ
    ========================= */
 const container = document.getElementById('container');
 [
-  ['ОПЕРАТОР',INVITES.OP],
-  ['ЧАТ',INVITES.CH],
-  ['ВИП ЧАТ',INVITES.VI],
-  ['НОВОСТИ',INVITES.NO],
-  ['ОТЗЫВЫ',INVITES.OT],
-  ['АУКЦИОН',INVITES.AU]
+  ['ОПЕРАТОР', OP_URL, true],
+  ['ЧАТ', INVITES.CH, false],
+  ['ВИП ЧАТ', INVITES.VI, false],
+  ['НОВОСТИ', INVITES.NO, false],
+  ['ОТЗЫВЫ', INVITES.OT, false],
+  ['АУКЦИОН', INVITES.AU, false]
 ].forEach(item=>{
   const b=document.createElement('button');
   b.textContent=item[0];
-  b.onclick=()=>openTG(item[1]);
+  b.onclick=()=>openTG(item[1], item[2]);
   container.appendChild(b);
 });
 </script>
