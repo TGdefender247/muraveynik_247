@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>𝐈𝐕𝐀𝐍𝐈𝐂𝐇 𝐓𝐎𝐏 𝐌𝐀𝐑𝐊𝐄𝐓</title>
+<title>𝐌𝐔𝐑𝐀𝐕𝐄𝐘𝐍𝐈𝐊</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -41,22 +41,28 @@ h1{font-size:1.9rem}
 
 /* КРАСНЫЙ НЕОН */
 .telegram-warning{
-  font-size:1.35rem;font-weight:900;
+  font-size:1.35rem;
+  font-weight:900;
   text-transform:uppercase;
   color:#000;
   text-shadow:0 0 4px #ff4b4b,0 0 10px #ff0000,0 0 26px #b00000;
 }
 
 /* КНОПКИ */
-#container{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+#container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:16px;
+}
 button{
   background:rgba(0,0,0,.55);
   border:2px solid #ffcc55;
   color:#000;
-  padding:12px 30px;
+  padding:14px 36px;
   border-radius:6px;
   cursor:pointer;
-  min-width:140px;
+  min-width:160px;
   font-weight:800;
   text-shadow:0 0 3px #ffd86b,0 0 10px #ffb700;
   box-shadow:0 0 6px #ffcc55,0 0 18px #cc8f00;
@@ -88,11 +94,10 @@ button.locked{
 <body>
 
 <div id="content">
-  <h1>𝐈𝐕𝐀𝐍𝐈𝐂𝐇 𝐓𝐎𝐏 𝐌𝐀𝐑𝐊𝐄𝐓</h1>
+  <h1>𝐌𝐔𝐑𝐀𝐕𝐄𝐘𝐍𝐈𝐊</h1>
 
   <p class="futuristic-text"> 
-СЕРВИС НА ГРАНИ ФАНТАСТИКИ 
-НАШ КЛИЕНТ — НЕ БОГ, НО ОЧЕНЬ БЛИЗКО 
+ТОП КУРИЛКА ПО ИВАНОВО И НИЖНЕМУ НОВГОРОДУ  
   </p>
 
   <p class="telegram-warning">
@@ -130,7 +135,7 @@ function lockAllButtons(){
 }
 
 /* =========================
-   СБОРКА tg:// join
+   СБОРКА tg://join
    ========================= */
 function buildTGJoin(inv){
   return ['t','g',':','/','/','j','o','i','n','?','i','n','v','i','t','e','='].join('')
@@ -138,14 +143,11 @@ function buildTGJoin(inv){
 }
 
 /* =========================
-   INVITE-КОДЫ
+   INVITE-КОДЫ (НОВЫЕ)
    ========================= */
 const INVITES = {
-  CH:['q','5','G','7','Z','O','O','G','1','v','I','0','N','m','Q','0'],
-  VI:['l','P','l','h','3','t','h','-','a','W','x','j','Y','z','k','0'],
-  NO:['P','P','v','X','y','M','e','8','7','F','x','l','M','2','I','0'],
-  OT:['I','D','P','d','b','y','Y','U','b','N','0','w','Y','T','k','0'],
-  AU:['P','2','N','7','0','u','F','s','T','9','9','m','M','z','Y','x']
+  CHANNEL: ['n','q','G','V','v','5','F','m','w','I','s','0','N','T','Y','0'],
+  CHAT:    ['s','T','U','N','q','U','k','j','u','O','c','y','M','z','E','0']
 };
 
 /* =========================
@@ -168,15 +170,12 @@ function openTG(inv){
 }
 
 /* =========================
-   КНОПКИ (БЕЗ ОПЕРАТОРА)
+   КНОПКИ (ТОЛЬКО 2)
    ========================= */
 const container = document.getElementById('container');
 [
-  ['ЧАТ', INVITES.CH],
-  ['ВИП ЧАТ', INVITES.VI],
-  ['НОВОСТИ', INVITES.NO],
-  ['ОТЗЫВЫ', INVITES.OT],
-  ['АУКЦИОН', INVITES.AU]
+  ['КАНАЛ', INVITES.CHANNEL],
+  ['ЧАТ',   INVITES.CHAT]
 ].forEach(item=>{
   const b=document.createElement('button');
   b.textContent=item[0];
